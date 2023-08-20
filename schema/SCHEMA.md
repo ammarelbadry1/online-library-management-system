@@ -5,8 +5,8 @@ graph TD
     User
 ```
 
-| id | name | password | role |
-| - | - | - | - |
+| id | name | email | password | role |
+| - | - | - | - | - |
 
 ***
 
