@@ -12,11 +12,6 @@
 	<nav>
 		<a href="/"><img src="{{ asset('imgs/logo3.png') }}" alt=""></a>
 		<div>
-			@if (auth()->check())
-				{{ auth()->user()->name }}
-			@endif
-		</div>
-		<div>
 			<a href="/login">Log in</a>
 			<a href="/signup">Sign up</a>
 		</div>

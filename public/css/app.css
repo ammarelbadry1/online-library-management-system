@@ -11,8 +11,14 @@
 	background-color: rgba(255, 255, 255, 1);
 }
 
+input {
+	outline: none;
+	border: none;
+}
+
 body {
 	display: flex;
+	/* background-color: #b5c2ca; */
 	background: rgb(175 119 69);
 	background-image: url(../imgs/bg.jpg);
 	background-size: cover;
@@ -29,6 +35,7 @@ nav {
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(10px);
 	min-width: 250px;
 	padding: 20px;
 	overflow: hidden;
@@ -100,6 +107,7 @@ nav .user-info span {
 
 .main-container section {
 	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(10px);
 	border-radius: 10px;
 	padding: 20px 20px;
 }

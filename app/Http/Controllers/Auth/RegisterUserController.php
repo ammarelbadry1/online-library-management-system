@@ -8,7 +8,7 @@ use App\Models\User;
 
 class RegisterUserController extends Controller
 {
-    public function index() {
+    public function create() {
 		return view('auth.register');
 	}
 
@@ -20,10 +20,10 @@ class RegisterUserController extends Controller
 			'role' => 'required'
 		]);
 
-		$user = User::create(request(['name', 'email', 'password']));
+		$user = User::create(request(['name', 'email', 'password', 'role']));
 
 		auth()->login($user);
 
-		return redirect()->to('/dashboard');
+		return $user['role'] == 'Admin'? redirect('/dashboard'): redirect('/');
 	}
 }

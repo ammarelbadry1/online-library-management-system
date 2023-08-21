@@ -9,6 +9,12 @@ class Book extends Model
 {
     use HasFactory;
 
+	protected $fillable = [
+        'title',
+        'author',
+        'content',
+    ];
+
 	public function users()
 	{
 		return $this->belongsToMany(User::class, 'users_books', 'book_id', 'user_id');

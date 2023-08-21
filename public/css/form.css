@@ -1,12 +1,6 @@
-body {
-	justify-content: flex-start;
-}
-
-.form-container {
-	display: flex;
+.main-container {
 	justify-content: center;
 	align-items: center;
-	height: 100%;
 }
 
 form {
@@ -16,25 +10,17 @@ form {
 	backdrop-filter: blur(10px);
 	color: white;
 	border-radius: 10px;
-	min-width: 300px;
+	min-width: 400px;
 	padding: 30px 50px;
 	font-size: 1.5rem;
 }
 
-
-
 form header {
-	text-align: center;
 	font-size: 2rem;
+	font-weight: 600;
 }
 
-.separator {
-	border-top: 1px solid grey;
-	width: 100%;
-	margin-top: 20px;
-}
-
-section {
+div {
 	margin-top: 20px;
 }
 
@@ -51,7 +37,7 @@ label {
 	cursor: pointer;
 }
 
-input[type='text'], input[type='password'] {
+input[type='text'], input[type='password'], textarea {
 	background-color: transparent;
 	color: white;
 	border: none;
@@ -67,36 +53,19 @@ input[type='text'], input[type='password'] {
 	cursor: pointer
 }
 
-input[type='text']:hover, input[type='password']:hover {
+textarea {
+	height: 200px;
+}
+
+input[type='text']:hover, input[type='password']:hover, textarea:hover {
 	border-bottom: 1px solid goldenrod;
 }
 
-input[type='text']:focus, input[type='password']:focus {
+input[type='text']:focus, input[type='password']:focus, textarea:focus {
 	background-color: rgba(0, 0, 0, 0.9);
 	border-bottom: 1px solid goldenrod;
 }
 
-.radio-container {
-	display: flex;
-	justify-content: space-around;
-}
-
-.radio-container label {
-	display: inline;
-}
-
-form div {
-	margin-top: 10px;
-}
-form div a {
-	color: white;
-	font-size: small;
-	transition: all 0.2s ease-out;
-}
-
-form div a:hover {
-	color: goldenrod;
-}
 
 input[type='submit'] {
 	background-color: goldenrod;

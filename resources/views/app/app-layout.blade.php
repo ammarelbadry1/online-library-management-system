@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>{{ config('app.name', 'Laravel') }}</title>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	@yield('css-specific')
 </head>
@@ -15,7 +16,7 @@
 			<div class="separator"></div>
 			<div class="navigation-links">
 				<a href="/dashboard">Dashboard</a>
-				<a href="#">Books</a>
+				<a href="/books">Books</a>
 				<a href="#">Students</a>
 			</div>
 		</div>
@@ -28,9 +29,6 @@
 		</div>
 	</nav>
 	<section class="main-container">
-		<section class="top">
-			<input type="text" placeholder="Search students">
-		</section>
 		<div class="rest">
 			@yield('content')
 		</div>
