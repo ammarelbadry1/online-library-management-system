@@ -1,0 +1,15 @@
+section span{
+	font-size: 50px;
+	font-weight: 600;
+}
+
+section .separator {
+	margin-top: 0;
+}
+
+section table {
+	width: 100%;
+	text-align: center;
+	border-spacing: 20px;
+}
+
