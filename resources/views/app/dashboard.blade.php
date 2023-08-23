@@ -6,7 +6,10 @@
 
 @section('content')
 <section class="top">
-	<input type="text" placeholder="Search students">
+	<form action="/students" method="GET">
+		<input type="text" name="id" placeholder="Search students...">
+		<input type="submit" value="search">
+	</form>
 </section>
 <section class="books">
 	<header>

@@ -17,11 +17,12 @@ class SessionController extends Controller
                 'message' => 'The email or password is incorrect, please try again'
             ]);
         }
-
-        return redirect()->to('/dashboard');
+		$role = auth()->user()->role;
+        return $role == 'Admin'? redirect('/dashboard'): redirect('/');
 	}
 
 	public function destroy() {
-		
+		auth()->logout();
+		return redirect('/');
 	}
 }

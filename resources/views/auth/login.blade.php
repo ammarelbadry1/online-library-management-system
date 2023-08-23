@@ -25,7 +25,7 @@
 			</section>
 		@endif
 		<div>
-			<a href="/login">Forget password?</a>
+			Don't have an account? <a href="/signup">Sign up</a>
 		</div>
 		<section>
 			<input type="submit" value="login">

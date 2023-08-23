@@ -50,4 +50,5 @@
 		@endforeach
 	</table>
 </section>
+
 @endsection

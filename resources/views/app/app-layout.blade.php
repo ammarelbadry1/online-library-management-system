@@ -17,14 +17,15 @@
 			<div class="navigation-links">
 				<a href="/dashboard">Dashboard</a>
 				<a href="/books">Books</a>
-				<a href="#">Students</a>
+				<a href="/students">Students</a>
 			</div>
 		</div>
 		<div class="user-info">
 		@if (auth()->check())
+			<i class='bx bxs-user-circle profile' ><a href="/profile"><span>view profile</span></a></i>
 			{{ auth()->user()->name }}
 			<br>
-			<span>{{ auth()->user()->email }}</span>
+			<span class="email">{{ auth()->user()->email }}</span>
 		@endif
 		</div>
 	</nav>

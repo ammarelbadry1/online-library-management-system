@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +34,8 @@ Route::get('/signup', [RegisterUserController::class, 'create']);
 Route::post('/signup', [RegisterUserController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'profile'])->middleware('auth');
+Route::put('/profile', [ProfileController::class, 'update'])->middleware('auth');
 
 Route::get('/books', [BookController::class, 'index'])->middleware('auth');
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth');
@@ -40,4 +44,8 @@ Route::get('/books/{book}', [BookController::class, 'show'])->where(['book' => '
 Route::get('/books/{book}/edit', [BookController::class, 'edit'])->where(['book' => '[0-9]+'])->middleware('auth');
 Route::put('/books/{book}', [BookController::class, 'update'])->where(['book' => '[0-9]+'])->middleware('auth');
 Route::delete('/books/{book}', [BookController::class, 'destroy'])->where(['book' => '[0-9]+'])->middleware('auth');
+
+
+Route::get('/students', [StudentController::class, 'index'])->middleware('auth');
+Route::get('/students/{student}', [StudentController::class, 'show'])->where(['student' => '[0-9]+'])->middleware('auth');
 

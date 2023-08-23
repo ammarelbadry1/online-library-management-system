@@ -76,10 +76,6 @@ nav div a:hover {
 	transition: all 0.3s ease-out;
 }
 
-.hero-section:hover {
-	color: goldenrod;
-}
-
 footer {
 	background-color: rgba(0, 0, 0, 0.9);
 	color: gold;

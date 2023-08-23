@@ -52,7 +52,7 @@
 			</section>
 		@enderror
 		<div>
-			<a href="/login">Already have an account?</a>
+			Already have an account? <a href="/login">Log in</a>
 		</div>
 		<section>
 			<input type="submit">

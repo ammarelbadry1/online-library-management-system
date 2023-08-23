@@ -91,7 +91,43 @@ nav .user-info {
 	font-size: large;
 }
 
-nav .user-info span {
+nav .user-info .profile {
+	display: block;
+	border-radius: 50%;
+	width: fit-content;
+	height: fit-content;
+	margin: auto;
+	font-size: 100px;
+	transition: all 0.3s ease-out;
+}
+
+nav .user-info .profile:hover a {
+	display: flex;
+	transform: translateY(-82px);
+}
+
+nav .user-info .profile a {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	color: grey;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 10px;
+	right: 103px;
+	width: 75px;
+	height: 75px;
+	padding: 5px;
+	text-decoration: none;
+	transition: all 0.3s ease-out;
+}
+
+nav .user-info .profile a span {
+	font-size: 13px;
+}
+
+nav .user-info .email {
 	color: grey;
 	font-size: medium;
 }
@@ -116,20 +152,34 @@ nav .user-info span {
 	text-align: center;
 }
 
-.main-container .top input {
+.main-container .top input[type='text'] {
 	background-color: rgba(255, 255, 255, 0.7);
 	border: none;
-	border-radius: 20px;
+	border-radius: 5px;
 	outline: none;
-	width: 300px;
-	height: 30px;
-	padding: 5px 15px;
+	padding: 10px 15px;
+	font-size: medium;
 	cursor: pointer;
 	transition: all 0.3s ease-out;
 }
 
-.main-container .top input:hover, .top input:focus {
+.main-container .top input[type='text']:hover, .top input[type='text']:focus {
 	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.main-container .top input[type='submit'] {
+	background-color: goldenrod;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	padding: 10px;
+	font-size: medium;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+}
+
+.main-container .top input[type='submit']:hover {
+	background-color: gold;
 }
 
 .main-container .rest {
