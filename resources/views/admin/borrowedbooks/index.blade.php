@@ -5,11 +5,15 @@
 @endsection
 
 @section('content')
-
+<section class="top">
+	<form action="/students" method="GET">
+		<input type="text" name="id" placeholder="Search students...">
+		<input type="submit" value="search">
+	</form>
+</section>
 <section class="books">
 	<header>
-		<span>Books</span>
-		<a href="/books/create" title="Add book">Create Book</a>
+		<span>Borrowed Books</span>
 	</header>
 	<table>
 		<tr colspan="5">
@@ -21,8 +25,7 @@
 			<th>ID</th>
 			<th>Author</th>
 			<th>Title</th>
-			<th>Created at</th>
-			<th>Actions</th>
+			<th>Borrower ID</th>
 		</tr>
 		<tr colspan="5">
 			<td colspan="5">
@@ -32,20 +35,9 @@
 		@foreach ($books as $book)
 			<tr>
 				<td>{{$book['id']}}</td>
-				<td> {{$book['author']}} </td>
+				<td> {{$book['author']}}</td>
 				<td> {{$book['title']}} </td>
-				<td> {{$book['created_at']}} </td>
-				<td>
-					<div class="operations-container">
-						<a href="/books/{{$book['id']}}">view</a>
-						<a href="/books/{{$book['id']}}/edit">update</a>
-						<form action="/books/{{ $book['id'] }}" method="post">
-							@csrf
-							@method('delete')
-							<input type="submit" value="delete">
-						</form>
-					</div>
-				</td>
+				<td> {{$book['user_id']}} </td>
 			</tr>
 		@endforeach
 	</table>

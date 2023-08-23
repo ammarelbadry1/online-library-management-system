@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-	public function profile() {
+	public function index() {
 		$role = auth()->user()->role;
 		if ($role == "Admin")
 			return view('admin.app.profile');

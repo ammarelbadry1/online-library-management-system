@@ -3,32 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Book;
 
-class StudentController extends Controller
+class BorrowBookController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
 		$role = auth()->user()->role;
-		if ($role == "Admin")
+		if ($role == "Student")
 		{
-			if ($request->query('id') == null)
-			{
-				$students = User::where('role', 'Student')->get();
-			}
-			else
-			{
-				$students = User::where('role', 'Student')
-								->where('id', $request->query('id'))
-								->get();
-			}
-			return view('admin.students.index', ["students" => $students]);
+			$books = Book::where('user_id', auth()->user()->id)->get();
+			return view('user.mybooks.index', ["books" => $books]);
 		}
 		else
-			return abort(401);
+		{
+			$books = Book::where('user_id', '<>', null)->get();
+			return view('admin.borrowedbooks.index', ["books" => $books]);
+		}
     }
 
     /**
@@ -44,7 +38,10 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		// dump($request['book_id']);
+        $book = Book::find($request['book_id']);
+		$book->update(['user_id' => auth()->user()->id]);
+		return redirect('/bookslibrary');
     }
 
     /**
@@ -52,14 +49,8 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-		$role = auth()->user()->role;
-		if ($role == "Admin")
-		{
-			$student = User::find($id);
-			return view('admin.students.show', ["student" => $student]);
-		}
-		else
-			return abort(401);
+		$book = Book::find($id);
+		return view("user.mybooks.show", ['book' => $book]);
     }
 
     /**
@@ -83,6 +74,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::find($id);
+		$book->update(['user_id' => null]);
+		return redirect('/mybooks');
     }
 }

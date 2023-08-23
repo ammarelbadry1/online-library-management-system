@@ -1,4 +1,4 @@
-@extends('app.app-layout')
+@extends('admin.app.app-layout')
 
 @section('css-specific')
 <link rel="stylesheet" href="{{asset('css/resource-listing.css')}}">
@@ -19,6 +19,10 @@
 		<tr>
 			<td>Email:</td>
 			<td>{{$student['email']}}</td>
+		</tr>
+		<tr>
+			<td>Joined at:</td>
+			<td>{{$student['created_at']}}</td>
 		</tr>
 	</table>
 </section>

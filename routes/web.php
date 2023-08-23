@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowBookController;
+use App\Http\Controllers\StudentBookController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +34,8 @@ Route::get('/logout', [SessionController::class, 'destroy']);
 Route::get('/signup', [RegisterUserController::class, 'create']);
 Route::post('/signup', [RegisterUserController::class, 'store']);
 
-Route::get('/admin-dashboard', [DashboardController::class, 'admin_dashboard'])->middleware('auth');
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
-Route::get('/profile', [ProfileController::class, 'profile'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::put('/profile', [ProfileController::class, 'update'])->middleware('auth');
 
 Route::get('/books', [BookController::class, 'index'])->middleware('auth');
@@ -45,7 +46,16 @@ Route::get('/books/{book}/edit', [BookController::class, 'edit'])->where(['book'
 Route::put('/books/{book}', [BookController::class, 'update'])->where(['book' => '[0-9]+'])->middleware('auth');
 Route::delete('/books/{book}', [BookController::class, 'destroy'])->where(['book' => '[0-9]+'])->middleware('auth');
 
+Route::get('/borrowedbooks', [BorrowBookController::class, 'index'])->middleware('auth');
 
 Route::get('/students', [StudentController::class, 'index'])->middleware('auth');
 Route::get('/students/{student}', [StudentController::class, 'show'])->where(['student' => '[0-9]+'])->middleware('auth');
+
+Route::get('/bookslibrary', [StudentBookController::class, 'index'])->middleware('auth');
+
+Route::get('/mybooks', [BorrowBookController::class, 'index'])->middleware('auth');
+Route::post('/mybooks', [BorrowBookController::class, 'store'])->middleware('auth');
+Route::get('/mybooks/{book}', [BorrowBookController::class, 'show'])->where(['book' => '[0-9]+'])->middleware('auth');
+Route::delete('/mybooks/{book}', [BorrowBookController::class, 'destroy'])->where(['book' => '[0-9]+'])->middleware('auth');
+
 

@@ -1,4 +1,4 @@
-@extends('app.app-layout')
+@extends('user.app.app-layout')
 
 @section('css-specific')
 <link rel="stylesheet" href="{{ asset('css/resources-listing.css') }}">
@@ -13,11 +13,11 @@
 </section>
 <section class="books">
 	<header>
-		<span>Books</span>
+		<span>Books Library</span>
 	</header>
 	<table>
-		<tr colspan="4">
-			<td colspan="4">
+		<tr colspan="3">
+			<td colspan="3">
 				<div class="separator"></div>
 			</td>
 		</tr>
@@ -25,10 +25,9 @@
 			<th>ID</th>
 			<th>Author</th>
 			<th>Title</th>
-			<th>Created at</th>
 		</tr>
-		<tr colspan="4">
-			<td colspan="4">
+		<tr colspan="3">
+			<td colspan="3">
 				<div class="separator"></div>
 			</td>
 		</tr>
@@ -37,11 +36,40 @@
 				<td>{{$book['id']}}</td>
 				<td>{{$book['author']}}</td>
 				<td>{{$book['title']}}</td>
-				<td>{{$book['created_at']}}</td>
 			</tr>
 		@endforeach
 	</table>
-	<a href="/books" class="show">...show more</a>
+	<a href="/bookslibrary" class="show">...show all</a>
+</section>
+<section class="borrowedbooks">
+	<header>
+		<span>Borrowed Books</span>
+	</header>
+	<table>
+		<tr colspan="3">
+			<td colspan="3">
+				<div class="separator"></div>
+			</td>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<th>Author</th>
+			<th>Title</th>
+		</tr>
+		<tr colspan="3">
+			<td colspan="3">
+				<div class="separator"></div>
+			</td>
+		</tr>
+		@foreach ($borrowedbooks as $book)
+			<tr>
+				<td>{{$book['id']}}</td>
+				<td>{{$book['author']}}</td>
+				<td>{{$book['title']}}</td>
+			</tr>
+		@endforeach
+	</table>
+	<a href="/mybooks" class="show">...show all</a>
 </section>
 
 @endsection

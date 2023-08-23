@@ -13,7 +13,7 @@ class SessionController extends Controller
 		{
 			$user = auth()->user();
 			auth()->login($user);
-			return $user['role'] == 'Admin'? redirect('/admin-dashboard'): redirect('/dashboard');
+			return redirect('/dashboard');
 		}
 		else
 		{

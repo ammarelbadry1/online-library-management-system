@@ -14,15 +14,23 @@ class BookController extends Controller
     public function index()
     {
 		$books = Book::all();
-        return view('books.index', ["books" => $books]);
-    }
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+			return view('admin.books.index', ["books" => $books]);
+		else
+			return abort(401);
+	}
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view("books.create");
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+			return view('admin.books.create');
+		else
+			return abort(401);
     }
 
     /**
@@ -30,12 +38,18 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-		Book::create([
-			'title' => $request->title,
-			'author' => $request->author,
-			'content' => $request->content
-		]);
-		return redirect('/books');
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+		{
+			Book::create([
+				'title' => $request->title,
+				'author' => $request->author,
+				'content' => $request->content
+			]);
+			return redirect('/books');
+		}
+		else
+			return abort(401);
     }
 
     /**
@@ -43,8 +57,14 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        $book = Book::find($id);
-		return view("books.show", ['book' => $book]);
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+		{
+			$book = Book::find($id);
+			return view("admin.books.show", ['book' => $book]);
+		}
+		else
+			return abort(401);
     }
 
     /**
@@ -52,21 +72,33 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        $book = Book::find($id);
-		return view("books.edit", ['book' => $book]);
-    }
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+		{
+			$book = Book::find($id);
+			return view("admin.books.edit", ['book' => $book]);
+		}
+		else
+			return abort(401);
+	}
 
     /**
      * Update the specified resource in storage.
      */
     public function update(BookRequest $request, string $id)
     {
-        $book = Book::find($id);
-		$book->title = $request['title'];
-		$book->author = $request['author'];
-		$book->content = $request['content'];
-		$book->save();
-		return redirect('/books');
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+		{
+			$book = Book::find($id);
+			$book->title = $request['title'];
+			$book->author = $request['author'];
+			$book->content = $request['content'];
+			$book->save();
+			return redirect('/books');
+		}
+		else
+			return abort(401);
     }
 
     /**
@@ -74,7 +106,13 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        Book::destroy($id);
-		return redirect('/books');
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+		{
+			Book::destroy($id);
+			return redirect('/books');
+		}
+		else
+			return abort(401);
     }
 }

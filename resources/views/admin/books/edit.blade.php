@@ -1,4 +1,4 @@
-@extends('app.app-layout')
+@extends('admin.app.app-layout')
 
 @section('css-specific')
 <link rel="stylesheet" href="{{asset('css/form.css')}}">

@@ -1,4 +1,4 @@
-@extends('app.app-layout')
+@extends('user.app.app-layout')
 
 @section('css-specific')
 <link rel="stylesheet" href="{{ asset('css/resources-listing.css') }}">
@@ -8,12 +8,11 @@
 
 <section class="books">
 	<header>
-		<span>Books</span>
-		<a href="/books/create" title="Add book"><i class='bx bx-plus'></i></a>
+		<span>Books Library</span>
 	</header>
 	<table>
-		<tr colspan="5">
-			<td colspan="5">
+		<tr colspan="4">
+			<td colspan="4">
 				<div class="separator"></div>
 			</td>
 		</tr>
@@ -21,29 +20,26 @@
 			<th>ID</th>
 			<th>Author</th>
 			<th>Title</th>
-			<th>Created at</th>
-			<th>Operations</th>
+			<th>Actions</th>
 		</tr>
-		<tr colspan="5">
-			<td colspan="5">
+		<tr colspan="4">
+			<td colspan="4">
 				<div class="separator"></div>
 			</td>
 		</tr>
 		@foreach ($books as $book)
 			<tr>
 				<td>{{$book['id']}}</td>
-				<td> {{$book['author']}} </td>
+				<td> {{$book['author']}}</td>
 				<td> {{$book['title']}} </td>
-				<td> {{$book['created_at']}} </td>
 				<td>
 					<div class="operations-container">
-						<a href="/books/{{$book['id']}}">view</a>
-						<a href="/books/{{$book['id']}}/edit">update</a>
-						<form action="/books/{{ $book['id'] }}" method="post">
+						<form action="/mybooks" method="POST">
 							@csrf
-							@method('delete')
-							<input type="submit" value="delete">
+							<input type="hidden" name="book_id" value="{{$book['id']}}">
+							<input type="submit" value="borrow and save in (My Books)">
 						</form>
+						{{-- <a href="">borrow<br><font color="yellow">save in (My Books)</font></a> --}}
 					</div>
 				</td>
 			</tr>

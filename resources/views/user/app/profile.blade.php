@@ -12,12 +12,12 @@
 <body>
 	<nav>
 		<div>
-			<div class="logo"><img src="{{ asset('imgs/logo3.png') }}" alt="logo"> <span>App_Name</span></div>
+			<div class="logo"><img src="{{ asset('imgs/logo3.png') }}" alt="logo"> <span>Online Library</span></div>
 			<div class="separator"></div>
 			<div class="navigation-links">
 				<a href="/dashboard">Dashboard</a>
-				<a href="/books">Books</a>
-				<a href="/students">Students</a>
+				<a href="/bookslibrary">Books Library</a>
+				<a href="/mybooks">My Books</a>
 			</div>
 		</div>
 	</nav>

@@ -1,4 +1,4 @@
-@extends('admin.app.app-layout')
+@extends('user.app.app-layout')
 
 @section('css-specific')
 <link rel="stylesheet" href="{{asset('css/resource-listing.css')}}">
