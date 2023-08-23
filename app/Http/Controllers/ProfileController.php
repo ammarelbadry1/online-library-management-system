@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
 	public function profile() {
-		return view('app.profile');
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+			return view('admin.app.profile');
+		else
+			return view('user.app.profile');
 	}
 
     public function update(Request $request) {

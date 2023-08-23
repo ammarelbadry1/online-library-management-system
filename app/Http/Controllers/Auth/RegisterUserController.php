@@ -24,6 +24,6 @@ class RegisterUserController extends Controller
 
 		auth()->login($user);
 
-		return $user['role'] == 'Admin'? redirect('/dashboard'): redirect('/');
+		return redirect('/dashboard');
 	}
 }

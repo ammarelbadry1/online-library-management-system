@@ -22,9 +22,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SessionController::class, 'index']);
+
 Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::get('/logout', [SessionController::class, 'destroy']);
@@ -33,6 +32,7 @@ Route::get('/logout', [SessionController::class, 'destroy']);
 Route::get('/signup', [RegisterUserController::class, 'create']);
 Route::post('/signup', [RegisterUserController::class, 'store']);
 
+Route::get('/admin-dashboard', [DashboardController::class, 'admin_dashboard'])->middleware('auth');
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
 Route::get('/profile', [ProfileController::class, 'profile'])->middleware('auth');
 Route::put('/profile', [ProfileController::class, 'update'])->middleware('auth');

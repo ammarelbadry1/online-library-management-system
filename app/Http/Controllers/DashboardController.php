@@ -11,6 +11,11 @@ class DashboardController extends Controller
 	public function dashboard() {
 		$books = Book::take(3)->get();
 		$students = User::where('role', 'Student')->take(3)->get();
-		return view('app.dashboard', ["books" => $books, "students" => $students]);
+		$role = auth()->user()->role;
+		if ($role == "Admin")
+			return view('admin.app.dashboard', ["books" => $books, "students" => $students]);
+		else
+			return view('user.app.dashboard', ["books" => $books]);
 	}
+
 }

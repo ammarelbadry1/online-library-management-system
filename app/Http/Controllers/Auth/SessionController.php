@@ -4,9 +4,23 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class SessionController extends Controller
 {
+	public function index() {
+		if (auth()->check())
+		{
+			$user = auth()->user();
+			auth()->login($user);
+			return $user['role'] == 'Admin'? redirect('/admin-dashboard'): redirect('/dashboard');
+		}
+		else
+		{
+			return view('welcome');
+		}
+	}
+
 	public function create() {
 		return view('auth.login');
 	}
@@ -17,8 +31,7 @@ class SessionController extends Controller
                 'message' => 'The email or password is incorrect, please try again'
             ]);
         }
-		$role = auth()->user()->role;
-        return $role == 'Admin'? redirect('/dashboard'): redirect('/');
+		return redirect('/dashboard');
 	}
 
 	public function destroy() {
